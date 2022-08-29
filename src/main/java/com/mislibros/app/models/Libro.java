@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -18,8 +20,13 @@ public class Libro {
     private String idLibro;
     
     private String titulo;
+    
+    @ManyToOne
     private Autor Autor;
+    
+    @ManyToOne
     private Editorial editorial;
+    
     private List<String> comentario;
     private boolean prestado;
     private String urlImagen;

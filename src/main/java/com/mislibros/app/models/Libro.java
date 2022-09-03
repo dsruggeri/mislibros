@@ -1,14 +1,10 @@
 
 package com.mislibros.app.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -27,19 +23,20 @@ public class Libro {
     @ManyToOne
     private Editorial editorial;
     
-    private List<String> comentario;
+    
+    private String comentario;
     private boolean prestado;
     private String urlImagen;
 
     public Libro() {
     }
 
-    public Libro(String titulo, Autor Autor, Editorial editorial, String urlImagen) {
+    public Libro(String titulo, Autor Autor, Editorial editorial, String urlImagen, String comentario) {
         this.titulo = titulo;
         this.Autor = Autor;
         this.editorial = editorial;
         this.urlImagen = urlImagen;
-        this.comentario = new ArrayList<>();
+        this.comentario = comentario;
         this.prestado = false;
     }
 
@@ -75,11 +72,11 @@ public class Libro {
         this.editorial = editorial;
     }
 
-    public List<String> getComentario() {
+    public String getComentario() {
         return comentario;
     }
 
-    public void setComentario(List<String> comentario) {
+    public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 

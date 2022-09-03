@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -13,12 +15,15 @@ import org.hibernate.annotations.GenericGenerator;
 public class Prestamo {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @OneToOne
     private Libro libro;
+    
+    @ManyToOne
     private Contacto contacto;
+    
     @Temporal(TemporalType.DATE)
     private Date fechaPrestamo;
 
